@@ -6,3 +6,23 @@
   flex: 1;
 }
 
+.workspace {
+  display: flex;
+  flex-direction: column;
+  width: 70%;
+  border: 2px dashed blue;
+  height: 500px;
+  border-radius: 100px;
+  padding: 50px;
+}
+
+.content {
+  display: flex;  
+  min-height: 450px;
+}
+
+.actions {
+  display: flex;
+  justify-content: space-evenly;
+  margin: 0 50px;
+}
