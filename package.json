@@ -1,0 +1,20 @@
+{
+  "name": "capitolis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/aviram83/compression.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/aviram83/compression/issues"
+  },
+  "homepage": "https://github.com/aviram83/compression#readme"
+}
