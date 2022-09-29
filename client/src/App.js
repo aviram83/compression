@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useCallback } from 'react';
 import Table from './components/Table/Table';
 import TransactionModal from './components/TransactionModal/TransactionModal';
 import { compress, exportToCSV } from './utils';
@@ -28,17 +28,19 @@ function App() {
     setReceivingTransactions(receiving);
   }
 
-  const fetchTransactions = () => {
+  const fetchTransactions = useCallback(() => {
     fetch('/api/transactions')
     .then(res => res.json())
     .then(data => {
       splitTransactions(data.data);
-    });
-  }
+    })
+  }, []);
 
   useEffect(() => {
     fetchTransactions();
-  }, []);
+
+    return (() => console.log('unmount'))
+  }, [fetchTransactions]);
 
   const openTrasactionModal = () => {
     setShowModal(true);
