@@ -2,6 +2,8 @@ import React, { useState } from 'react';
 import Modal from 'react-bootstrap/Modal';
 import Button from 'react-bootstrap/Button';
 import Form from 'react-bootstrap/Form';
+import Row from 'react-bootstrap/Row';
+import Col from 'react-bootstrap/Col';
 
 const TransactionModal = ({ show, onClose, onSave }) => {
     const [validated, setValidated] = useState(false);
@@ -19,9 +21,9 @@ const TransactionModal = ({ show, onClose, onSave }) => {
                 tradingParty: form.elements.tradingParty.value,
                 counterParty: form.elements.counterParty.value,
                 amount: Number(form.elements.amount.value),
-            })            
+            })
             setValidated(false);
-        }        
+        }
     };
 
     return (
@@ -31,28 +33,35 @@ const TransactionModal = ({ show, onClose, onSave }) => {
             </Modal.Header>
             <Modal.Body>
                 <Form noValidate validated={validated} onSubmit={handleSubmit}>
-                    <Form.Label>Trading Party</Form.Label>
-                    <Form.Control
-                        id="tradingParty"
-                        type="text"
-                        readOnly
-                        disabled
-                        defaultValue="me"
-                    />
-                    <Form.Label>Counter party</Form.Label>
-                    <Form.Control
-                        id="counterParty"
-                        type="text"
-                        required
-                    />
-                    <Form.Label>Amount</Form.Label>
-                    <Form.Control
-                        id="amount"
-                        type="number"
-                        required
-                    />
-                    <Button variant="secondary" onClick={onClose}>Close</Button>
-                    <Button type="submit">Submit form</Button>
+                    <Form.Group className="mb-3">
+                        <Form.Label>Trading Party</Form.Label>
+                        <Form.Control
+                            id="tradingParty"
+                            type="text"
+                            disabled
+                            defaultValue="me"
+                        />
+                        <Form.Label>Counter party</Form.Label>
+                        <Form.Control
+                            id="counterParty"
+                            type="text"
+                            required
+                        />
+                        <Form.Label>Amount</Form.Label>
+                        <Form.Control
+                            id="amount"
+                            type="number"
+                            required
+                        />
+                    </Form.Group>
+                    <Row className="align-items-left">
+                        <Col xs="auto">
+                            <Button type="submit">Save</Button>
+                        </Col>
+                        <Col>
+                            <Button variant="secondary" onClick={onClose}>Cancel</Button>
+                        </Col>
+                    </Row>
                 </Form>
             </Modal.Body>
         </Modal>

@@ -15,7 +15,7 @@
   position: relative;
   display: flex;
   flex-direction: column;
-  width: 70%;
+  min-width: 980px;  
   border: var(--border-style);
   min-height: 600px;
   border-radius: 100px;
