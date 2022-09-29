@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react';
 import Table from './components/Table/Table';
+import TransactionModal from './components/TransactionModal/TransactionModal';
 
 import './App.css';
 
@@ -7,17 +8,18 @@ function App() {
   const [transactions, setTransactions] = useState([]);
   const [payingTransactions, setPayingTransactions] = useState([]);
   const [receivingTransactions, setReceivingTransactions] = useState([]);
+  const [showModal, setShowModal] = useState(false);
 
   const splitTransactions = (data) => {
     const paying = [];
     const receiving = [];
 
-    data.map(transaction => {
+    data.forEach(transaction => {
       if (transaction.amount < 0) {
         paying.push(transaction)
       } else {
         receiving.push(transaction);
-      }      
+      }
     });
 
     setTransactions(data);
@@ -31,13 +33,31 @@ function App() {
       .then(data => {
         splitTransactions(data.data);
       });
-  },[]);
+  }, []);
+
+  const openTrasactionModal = () => {
+    setShowModal(true);
+  }
+
+  const closeTrasactionModal = () => {
+    setShowModal(false);
+  }
+
+  const addNewTransaction = (data) => {
+    fetch('/api/transaction', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: JSON.stringify(data)
+    });
+  }
 
   return (
     <div className="App">
       <div className="workspace">
         <div className="content">
-          <Table 
+          <Table
             label="Paying"
             rows={payingTransactions}
           />
@@ -47,10 +67,15 @@ function App() {
           />
         </div>
         <div className="actions">
-          <button>Add New Transaction</button>
+          <button onClick={openTrasactionModal}>Add New Transaction</button>
           <button>Compress Transactions</button>
         </div>
       </div>
+      <TransactionModal
+        show={showModal}
+        onClose={closeTrasactionModal}
+        onSave={addNewTransaction}
+      />
     </div>
   );
 }

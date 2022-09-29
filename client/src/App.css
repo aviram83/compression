@@ -11,11 +11,12 @@
 }
 
 .workspace {
+  position: relative;
   display: flex;
   flex-direction: column;
   width: 70%;
   border: 2px dashed blue;
-  height: 500px;
+  min-height: 600px;
   border-radius: 100px;
   padding: 50px;
 }
@@ -27,7 +28,8 @@
 }
 
 .actions {
-  display: flex;
+  display: flex;  
+  height: 50px;
   justify-content: space-evenly;
   margin: 0 50px;
 }
