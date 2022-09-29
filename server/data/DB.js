@@ -3,7 +3,7 @@ var data = {
 };
 
 const setTransactions = (transactions) => {    
-    console.log('Set New Transactions');
+    console.log('DB - Set New Transactions');
     data = {
         ...data,
         transactions: [
@@ -14,9 +14,8 @@ const setTransactions = (transactions) => {
 }
 
 const setTransaction = (transaction) => {    
-    console.log('Add New Transactions');
-    data.transactions.push(transaction);
-    console.log(data);
+    console.log('DB - Add New Transaction');
+    data.transactions.push(transaction);    
 }
 
 export {
