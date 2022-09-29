@@ -1,6 +1,7 @@
 import { useState, useEffect } from 'react';
 import Table from './components/Table/Table';
 import TransactionModal from './components/TransactionModal/TransactionModal';
+import { compress, exportToCSV } from './utils';
 
 import './App.css';
 
@@ -64,6 +65,13 @@ function App() {
     });
   }
 
+  const compressedAndExport = () => {
+    const compressedTransactions = compress(transactions);
+
+    console.log(compressedTransactions);
+    exportToCSV(compressedTransactions);
+  }
+
   return (
     <div className="App">
       <div className="workspace">
@@ -79,7 +87,7 @@ function App() {
         </div>
         <div className="actions">
           <button onClick={openTrasactionModal}>Add New Transaction</button>
-          <button>Compress Transactions</button>
+          <button onClick={compressedAndExport}>Compress Transactions</button>
         </div>
       </div>
       <TransactionModal
