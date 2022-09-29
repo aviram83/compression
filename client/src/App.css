@@ -1,13 +1,14 @@
 :root {
   --column-width: 200px;
+  --border-style: 1px dashed blue;
 }
 
 .App {
   display: flex;
-  justify-content: center;
   align-items: center;
   flex-direction: column;
   flex: 1;
+  padding-top: 50px;
 }
 
 .workspace {
@@ -15,7 +16,7 @@
   display: flex;
   flex-direction: column;
   width: 70%;
-  border: 2px dashed blue;
+  border: var(--border-style);
   min-height: 600px;
   border-radius: 100px;
   padding: 50px;
@@ -28,8 +29,16 @@
 }
 
 .actions {
-  display: flex;  
-  height: 50px;
+  display: flex;    
   justify-content: space-evenly;
   margin: 0 50px;
+}
+
+.actions .button {
+  border: var(--border-style);
+  border-radius: 10px;
+  height: 40px;
+  color: blue;
+  background-color: lightgrey;
+  padding: 0 20px;
 }

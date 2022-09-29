@@ -86,8 +86,8 @@ function App() {
           />
         </div>
         <div className="actions">
-          <button onClick={openTrasactionModal}>Add New Transaction</button>
-          <button onClick={compressedAndExport}>Compress Transactions</button>
+          <button className="button" onClick={openTrasactionModal}>Add New Transaction</button>
+          <button className="button" onClick={compressedAndExport}>Compress Transactions</button>
         </div>
       </div>
       <TransactionModal
