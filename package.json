@@ -4,11 +4,15 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "node server/index.js"
+    "start": "node server/index.js",
+    "build": "cd client && npm install && npm run build"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/aviram83/compression.git"
+  },
+  "engines": {
+    "node": "16.15.1"
   },
   "keywords": [],
   "author": "",
