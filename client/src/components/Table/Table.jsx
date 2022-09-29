@@ -20,7 +20,7 @@ const Table = ({ label, rows = [] }) => {
                                     {idx + 1}. {row.counterparty}
                                 </div>
                                 <div className="cell">
-                                    {row.amount}
+                                    ${Math.abs(row.amount)}
                                 </div>
                             </div>
                         ))
