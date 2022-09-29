@@ -37,8 +37,7 @@ const TransactionModal = ({ show, onClose, onSave }) => {
                         <Form.Label>Trading Party</Form.Label>
                         <Form.Control
                             id="tradingParty"
-                            type="text"
-                            disabled
+                            type="text"                            
                             defaultValue="me"
                         />
                         <Form.Label>Counter party</Form.Label>
