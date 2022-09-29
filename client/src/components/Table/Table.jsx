@@ -17,7 +17,7 @@ const Table = ({ label, rows = [] }) => {
                         rows.map((row, idx) => (
                             <div className="row" key={`${row.counterparty}-${row.amount}`}>
                                 <div className="cell">
-                                    {idx + 1}. {row.counterparty}
+                                    {idx + 1}. {row.counterParty}
                                 </div>
                                 <div className="cell">
                                     ${Math.abs(row.amount)}

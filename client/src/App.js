@@ -27,12 +27,16 @@ function App() {
     setReceivingTransactions(receiving);
   }
 
-  useEffect(() => {
+  const fetchTransactions = () => {
     fetch('/api/transactions')
-      .then(res => res.json())
-      .then(data => {
-        splitTransactions(data.data);
-      });
+    .then(res => res.json())
+    .then(data => {
+      splitTransactions(data.data);
+    });
+  }
+
+  useEffect(() => {
+    fetchTransactions();
   }, []);
 
   const openTrasactionModal = () => {
@@ -44,12 +48,19 @@ function App() {
   }
 
   const addNewTransaction = (data) => {
+    closeTrasactionModal();
     fetch('/api/transaction', {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json'
       },
       body: JSON.stringify(data)
+    })
+    .then(res => res.json())
+    .then(data => {
+      if(data.success) {
+        fetchTransactions();
+      }
     });
   }
 

@@ -7,19 +7,21 @@ const TransactionModal = ({ show, onClose, onSave }) => {
     const [validated, setValidated] = useState(false);
 
     const handleSubmit = (event) => {
+        event.preventDefault();
+        event.stopPropagation();
         const form = event.currentTarget;
         if (form.checkValidity() === false) {
             event.preventDefault();
             event.stopPropagation();
+            setValidated(true);
         } else {
             onSave({
                 tradingParty: form.elements.tradingParty.value,
                 counterParty: form.elements.counterParty.value,
                 amount: Number(form.elements.amount.value),
-            })        
-        }
-
-        setValidated(true);        
+            })            
+            setValidated(false);
+        }        
     };
 
     return (
